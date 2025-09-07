@@ -42,7 +42,7 @@ array([[ 0.94716928, -0.25180561, -0.35069721,  1.47234633,  1.2590635 ],
 ```
 
 ## 2. Divisible by 3 Problem:
-This code generates an array containing the squares of the first 100 integers in a 10x10 array. It accomplishes this by creating an array ranging from 1-100 using ```np.arange(1,101)``` and squaring every element in the array. It then finds all the numbers in the array divisible by 3 using ```is_divisible_by_3 = Y_squared % 3 == 0``` and indexing the results from the initial array before displaying the results and saving it in the user's disk under the name ```div_by_3.npy```.
+This code generates an array containing the squares of the first 100 integers in a 10x10 array. It accomplishes this by creating an array ranging from 1-100 using ```np.arange(1,101)``` and squaring every element in the array. It then finds all the numbers in the array divisible by 3 using ```is_divisible_by_3 = Y_squared % 3 == 0``` and indexing the results from the initial array before displaying the results and saving it in the user's disk under the name `div_by_3.npy`.
 
 ### Divisible by 3 Code:
 ```
