@@ -61,12 +61,12 @@ def main():
     print("Your initial 10x10 array of the squares of the first 100 integers is as follows: ")
     print(Y_squared)
 
-    print("\nThe integers divisible by three in the 10x10 array is as follows: ")
+    print("\nThe integers divisible by 3 in the 10x10 array is as follows: ")
     print(div_by_3)
 
     np.save('div_by_3.npy', div_by_3)
 
-    print("\nThe array of numbers divisible by 3 has been saved as 'div_by_3.npy', you may find it in your local disk.")
+    print("\nThe array of numbers divisible by three has been saved as 'div_by_3.npy', you may find it in your local disk.")
     
 main()
 ```
