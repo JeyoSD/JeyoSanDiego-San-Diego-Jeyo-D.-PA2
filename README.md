@@ -3,7 +3,7 @@
 This is a repository that contains Jupyter Notebook code using the Python programming language. It is a set of two exercises that make use of Numerical Python concepts.
 
 ## 1. Normalization Problem
-This code creates a randomized 5x5 array using ```.random.random((5,5))``` and finds the mean and standard deviation by using ```.mean()``` and ```.std()```. It displays the array generated and normalizes it using the formula: ```Z = (X - mean)/std```. It displays the normalized version of the array and saves it in the user's disk under the file name of `X_normalized.npy`.
+This code creates a randomized 5x5 array using ```np.random.random((5,5))``` and finds the mean and standard deviation by using ```.mean()``` and ```.std()```. It displays the array generated and normalizes it using the formula: ```Z = (X - mean)/std```. It displays the normalized version of the array and saves it in the user's disk under the file name of `X_normalized.npy`.
 
 ### Normalization Code:
 ```
