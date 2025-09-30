@@ -1,33 +1,49 @@
-# Experiment 2: Numerical Python
+# Experiment 2: Numerical Python v.1.1
 
-This is a repository that contains Jupyter Notebook code using the Python programming language. It is a set of two exercises that make use of Numerical Python concepts.
+This repository contains Jupyter Notebook code written in the Python programming language. It is a set of two exercises that utilize Numerical Python concepts.
 
 ## 1. Normalization Problem
-This code creates a randomized 5x5 array using ```np.random.random((5,5))``` and finds the mean and standard deviation by using ```.mean()``` and ```.std()```. It displays the array generated and normalizes it using the formula: ```Z = (X - mean)/std```. It displays the normalized version of the array and saves it in the user's disk under the file name of `X_normalized.npy`.
+The first part of the code imports the NumPy Library using `import numpy as np` for use in the code and defines the main function. The first three lines of code generate and output a 5x5 array with randomized values using `np.random.random((5,5))` and store the randomized array in `X`.
+```
+import numpy as np #Imports the NumPy Library
+def main():
+    X = np.random.random((5,5)) #Generates a 5x5 array with randomized values
+    print("Your randomized array is as follows: ", X) #Outputs the generated randomized array
+```
+The main body of the code finds the mean value of the array by finding the quotient of the sum of all elements and the total number of elements in the array using `.mean()` and finds the standard deviation using `.std()`. It stores the results in `mean` and `std`, which are then used in the normalization formula of ((x-mean)/standard deviation) and saved under `X_normalized` and output for viewing.
+```
+    mean = X.mean() #Finds the mean value of array X
+    std = X.std() #Finds the standard deviation of array X
+    print("\nYour mean is: " + str(mean) + ", while your standard deviation is: " + str(std) + "." + "\n") #Outputs the mean and standard deviation
+
+    X_normalized = ((X-mean)/std) #Solves for the normalized values of the array
+    print("The normalized array is as follows: ", X_normalized) #Prints another notification for the 
+```
+The last segment of the code uses `np.save()` to save `X_normalized` as a .npy file in the user's local directory, displaying an output message and then calling the main function to execute the code. 
+```
+    np.save('X_normalized.npy', X_normalized) #Saves the normalized values as X_normalized.npy
+
+    print("\nYour normalized array has been saved as 'X_normalized.npy', you may find it in your local disk.") #Outputs a message to notify the user of the process
+
+main()
+```
 
 ### Normalization Code:
 ```
-#Create a random 5 x 5 ndarray and store it in variable X. Normalize X. Save your normalized ndarray as X_normalized.npy
-
-import numpy as np
+import numpy as np #Imports the NumPy Library
 def main():
-    X = np.random.random((5,5))
-    mean = X.mean()
-    std = X.std()
+    X = np.random.random((5,5)) #Generates a 5x5 array with randomized values
+    print("Your randomized array is as follows:\n", X) #Outputs the generated randomized array
+    mean = X.mean() #Finds the mean value of array X
+    std = X.std() #Finds the standard deviation of array X
+    print("\nYour mean is: " + str(mean) + ", while your standard deviation is: " + str(std) + "." + "\n") #Outputs the mean and standard deviation
 
-    print("Your randomized array is as follows: ")
-    print(X)
+    X_normalized = ((X-mean)/std) #Solves for the normalized values of the array
+    print("The normalized array is as follows:\n", X_normalized) #Outputs the normalized values for the array
 
-    print("\nYour mean is: " + str(mean) + ", while your standard deviation is: " + str(std) + "." + "\n")
-    print("The normalized array is as follows: ")
+    np.save('X_normalized.npy', X_normalized) #Saves the normalized values as X_normalized.npy
 
-    X_normalized = ((X-mean)/std)
-
-    print(X_normalized)
-
-    np.save('X_normalized.npy', X_normalized)
-
-    print("\nYour normalized array has been saved as 'X_normalized.npy', you may find it in your local disk.")
+    print("\nYour normalized array has been saved as 'X_normalized.npy', you may find it in your local disk.") #Outputs a message notifying the user of the saved file
 
 main()
 ```
@@ -46,27 +62,20 @@ This code generates an array containing the squares of the first 100 integers in
 
 ### Divisible by 3 Code:
 ```
-#Create a 10x10 ndarray from the squares of the first 100 integers. 
-#From this ndarray, determine all the elements that are divisible by 3. Save the result as div_by_3.npy
-
-import numpy as np
+import numpy as np #Imports the NumPy Library
 def main():
-    Y = np.arange(1, 101)
-    Y_squared = (Y**2).reshape(10, 10)
+    Y = np.arange(1, 101) #Generates an array with the values of 1 to 100
+    Y_squared = (Y**2).reshape(10, 10) #Squares all the values in the array and reshapes the array to a 10x10 shape
 
-    is_divisible_by_3 = Y_squared % 3 == 0
+    is_divisible_by_3 = Y_squared % 3 == 0 #Stores a condition for values that are divisible by 3 
+    div_by_3 = (Y_squared[is_divisible_by_3]).reshape(3,11) #Finds all values according to the condition and reshapes the array to 3x11
 
-    div_by_3 = (Y_squared[is_divisible_by_3]).reshape(3,11)
+    print("Your initial 10x10 array of the squares of the first 100 integers is as follows:\n", Y_squared) #Outputs the squared values of the initial array
+    print("\nThe integers divisible by 3 in the 10x10 array is as follows:\n", div_by_3) #Outputs the array with values divisible by 3
 
-    print("Your initial 10x10 array of the squares of the first 100 integers is as follows: ")
-    print(Y_squared)
+    np.save('div_by_3.npy', div_by_3) #Saves the div_by_3 array as 'div_by_3.npy' in the user's local directory
 
-    print("\nThe integers divisible by 3 in the 10x10 array is as follows: ")
-    print(div_by_3)
-
-    np.save('div_by_3.npy', div_by_3)
-
-    print("\nThe array of numbers divisible by three has been saved as 'div_by_3.npy', you may find it in your local disk.")
+    print("\nThe array of numbers divisible by three has been saved as 'div_by_3.npy', you may find it in your local disk.") #Outputs a message notifying the user of the saved file
     
 main()
 ```
