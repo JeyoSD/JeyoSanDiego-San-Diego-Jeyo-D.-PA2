@@ -58,7 +58,29 @@ array([[ 0.94716928, -0.25180561, -0.35069721,  1.47234633,  1.2590635 ],
 ```
 
 ## 2. Divisible by 3 Problem:
-This code generates an array containing the squares of the first 100 integers in a 10x10 array. It accomplishes this by creating an array ranging from 1-100 using ```np.arange(1,101)``` and squaring every element in the array. It then finds all the numbers in the array divisible by 3 using ```is_divisible_by_3 = Y_squared % 3 == 0``` and indexing the results from the initial array before displaying the results and saving it in the user's disk under the name `div_by_3.npy`.
+The first part of the code imports the NumPy Library and generates an array with values ranging from 1 to 100 using `np.arange(1, 100)`, storing the array in `Y`. The next code raises all elements of the array by 2, squaring all values. Since the array is initially shapeless, the code uses ```.reshape(10,10)``` to transform the unshaped array into a 10x10 shape, storing the array in `Y_squared.`
+```
+import numpy as np #Imports the NumPy Library
+def main():
+    Y = np.arange(1, 101) #Generates an array with the values of 1 to 100
+    Y_squared = (Y**2).reshape(10, 10) #Squares all the values in the array and reshapes the array to a 10x10 shape
+```
+The next part of the code stores a Boolean expression to find all values that are divisible by three and have no remainder, specifically searching for those that are perfectly divisible by 3 and storing the condition in `is_divisible_by_3`. It is comprised primarily of two parts: `Y_squared % 3` divides the values by 3 and returns the remainder of the quotient, while `== 0` imposes the condition that the remainder of the quotient of each value must equal 0, turning the expression into the necessary condition. The next code indexes all values that return true from `is_divisible_by_3` in the array `Y_squared`, generating an unshaped array with all values divisible by 3. It then transforms this array into a 3x11 array using `.reshape(3,11)` and stores the array in `div_by_3`.
+```
+    is_divisible_by_3 = Y_squared % 3 == 0 #Stores a condition for values that are divisible by 3 
+    div_by_3 = (Y_squared[is_divisible_by_3]).reshape(3,11) #Finds all values according to the condition and reshapes the array to 3x11
+```
+The last parts of the code send an output message and display the `Y_squared` array and the `div_by_3` array. It then saves the `div_by_3` array in the user's local files using `np.save()` and notifies the user of the process with the following message before calling the main function to execute the code.
+```
+    print("Your initial 10x10 array of the squares of the first 100 integers is as follows:\n", Y_squared) #Outputs the squared values of the initial array
+    print("\nThe integers divisible by 3 in the 10x10 array is as follows:\n", div_by_3) #Outputs the array with values divisible by 3
+
+    np.save('div_by_3.npy', div_by_3) #Saves the div_by_3 array as 'div_by_3.npy' in the user's local directory
+
+    print("\nThe array of numbers divisible by three has been saved as 'div_by_3.npy', you may find it in your local disk.") #Outputs a message notifying the user of the saved file
+    
+main()
+```
 
 ### Divisible by 3 Code:
 ```
